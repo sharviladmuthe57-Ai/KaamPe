@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KaamPe — Get It Fixed</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:#F4F7F7;
+}
+
+/* SPLASH */
+#splash {
+  position:fixed;
+  inset:0;
+  background:#0D7377;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
+}
+
+.hide { display:none; }
+
+/* SIGNIN */
+#signin {
+  display:none;
+  padding:40px;
+}
+
+#signin.show { display:block; }
+
+input {
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+}
+
+button {
+  padding:12px;
+  width:100%;
+  background:#0D7377;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+/* APP */
+#app {
+  display:none;
+  padding:20px;
+}
+
+#app.show { display:block; }
+
+.card {
+  background:white;
+  padding:15px;
+  margin-top:10px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <h1>KaamPe</h1>
+  <p>Loading...</p>
+</div>
+
+<!-- SIGNIN -->
+<div id="signin">
+  <h2>Welcome 👋</h2>
+  <input type="text" id="name" placeholder="Your Name">
+  <input type="text" id="city" placeholder="City">
+  <button onclick="startApp()">Get Started</button>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <h2 id="welcome"></h2>
+
+  <div class="card">🔧 Plumber - ₹150</div>
+  <div class="card">💡 Electrician - ₹180</div>
+  <div class="card">🔩 Mechanic - ₹200</div>
+</div>
+
+<script>
+window.onload = () => {
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('hide');
+    document.getElementById('signin').classList.add('show');
+  }, 1500);
+};
+
+function startApp() {
+  const name = document.getElementById('name').value || "User";
+  const city = document.getElementById('city').value || "Your City";
+
+  document.getElementById('welcome').innerText =
+    "Hello " + name + " from " + city + " 👋";
+
+  document.getElementById('signin').classList.remove('show');
+  document.getElementById('app').classList.add('show');
+}
+</script>
+
+</body>
+</html>
